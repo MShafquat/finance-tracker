@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+:root {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+
+  /* Dark theme (default) */
+  --bg: #060a12;
+  --surface: #0c1018;
+  --surface-alt: #0f1520;
+  --sidebar-bg: #080c15;
+  --border-1: rgba(255,255,255,0.04);
+  --border-2: rgba(255,255,255,0.05);
+  --border-3: rgba(255,255,255,0.06);
+  --border-4: rgba(255,255,255,0.07);
+  --divide: rgba(255,255,255,0.03);
+  --hover: rgba(255,255,255,0.03);
+  --ghost: rgba(255,255,255,0.04);
+  --ghost-h: rgba(255,255,255,0.07);
+  --overlay: rgba(255,255,255,0.05);
+  --skeleton: rgba(255,255,255,0.02);
+  --t1: #f1f5f9;
+  --t2: #cbd5e1;
+  --t3: #94a3b8;
+  --t4: #64748b;
+  --t5: #475569;
+}
+
+.light {
+  --bg: #f1f5f9;
+  --surface: #ffffff;
+  --surface-alt: #f8fafc;
+  --sidebar-bg: #ffffff;
+  --border-1: rgba(0,0,0,0.05);
+  --border-2: rgba(0,0,0,0.06);
+  --border-3: rgba(0,0,0,0.07);
+  --border-4: rgba(0,0,0,0.1);
+  --divide: rgba(0,0,0,0.04);
+  --hover: rgba(0,0,0,0.03);
+  --ghost: rgba(0,0,0,0.05);
+  --ghost-h: rgba(0,0,0,0.08);
+  --overlay: rgba(0,0,0,0.06);
+  --skeleton: rgba(0,0,0,0.04);
+  --t1: #0f172a;
+  --t2: #1e293b;
+  --t3: #64748b;
+  --t4: #94a3b8;
+  --t5: #cbd5e1;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--bg);
+  color: var(--t1);
+}
+
+/* Animations */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease both;
+}
+
+.stagger-1 { animation-delay: 0.06s; }
+.stagger-2 { animation-delay: 0.12s; }
+.stagger-3 { animation-delay: 0.18s; }
+.stagger-4 { animation-delay: 0.24s; }
+.stagger-5 { animation-delay: 0.30s; }
+
+/* Subtle card hover lift */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--overlay);
+  border-radius: 4px;
+}
+
+/* Date input icon */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.4);
+  cursor: pointer;
+}
+
+/* Number input spin buttons */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  opacity: 0.3;
+}
