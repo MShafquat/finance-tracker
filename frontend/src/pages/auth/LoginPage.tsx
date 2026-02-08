@@ -39,8 +39,8 @@ export default function LoginPage() {
             <rect x="9" y="9" width="6" height="6" rx="1.5" fill="#10b981" opacity="0.3" />
           </svg>
         </div>
-        <h2 className="text-2xl font-semibold text-[var(--t1)] tracking-tight">Welcome back</h2>
-        <p className="text-[var(--t3)] mt-1.5 text-sm">Sign in to your account</p>
+        <h2 className="text-2xl font-semibold text-[var(--t1)] tracking-tight">Your finances,<br />simplified.</h2>
+        <p className="text-[var(--t3)] mt-1.5 text-sm">Sign in to continue</p>
       </div>
 
       <div className="bg-[var(--surface)] rounded-2xl border border-[var(--border-3)] p-6 space-y-4">

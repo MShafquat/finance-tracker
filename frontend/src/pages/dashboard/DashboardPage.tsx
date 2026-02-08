@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { api } from '../../lib/api'
+import { useAuthStore } from '../../store/auth'
 
 interface DashboardData {
   consolidated_balance: number
@@ -18,7 +19,16 @@ function fmt(n: number) {
   return `৳${n.toLocaleString('en', { minimumFractionDigits: 2 })}`
 }
 
+function greeting() {
+  const h = new Date().getHours()
+  if (h < 12) return 'Good morning'
+  if (h < 18) return 'Good afternoon'
+  return 'Good evening'
+}
+
 export default function DashboardPage() {
+  const user = useAuthStore((s) => s.user)
+  const name = (user?.user_metadata?.full_name as string | undefined)?.split(' ')[0]
   const { data, isLoading } = useQuery<DashboardData>({
     queryKey: ['dashboard'],
     queryFn: () => api.get('/dashboard/').then((r) => r.data),
@@ -41,7 +51,8 @@ export default function DashboardPage() {
   return (
     <div className="p-8 space-y-5 max-w-5xl mx-auto">
       <div className="animate-fade-in-up">
-        <h1 className="text-xl font-semibold text-[var(--t1)] tracking-tight">Overview</h1>
+        <p className="text-sm text-[var(--t3)]">{greeting()}{name ? `, ${name}` : ''}.</p>
+        <h1 className="text-xl font-semibold text-[var(--t1)] tracking-tight mt-0.5">Overview</h1>
         <p className="text-sm text-[var(--t3)] mt-0.5">{monthLabel}</p>
       </div>
 
